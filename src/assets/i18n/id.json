@@ -51,6 +51,8 @@
   "courses.tools": "Tools/Teknologi",
   "courses.details.page-title": "Detail Kursus",
   "courses.chapters": "List Chapter",
+  "courses.chapters.page-title": "Detail Chapter",
+  "courses.lessons": "List Lessons",
 
   "placeholders.input-field": "Masukkan {{field}}",
   "placeholders.upload-file": "Unggah file",
@@ -66,6 +68,11 @@
   "attributes.status": "Status",
   "attributes.course": "Kursus",
   "attributes.chapter": "Chapter",
+  "attributes.type": "Tipe",
+  "attributes.video-url": "URL Video",
+  "attributes.lesson": "Lesson",
+  "attributes.lessons": "List Lessons",
+  "attributes.text-content": "Text",
 
   "validation.required": "Wajib diisi",
   "validation.field-required": "{{field}} wajib diisi",

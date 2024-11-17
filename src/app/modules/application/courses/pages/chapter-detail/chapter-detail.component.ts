@@ -1,20 +1,20 @@
 import { CommonModule, Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
-import { Course } from '../../../../../../types/courses';
+import { Chapter } from '../../../../../../types/chapters';
 import { HttpFormattedErrorResponse } from '../../../../../../types/http';
 import { HttpService } from '../../../../../core/services/http.service';
 import { ToastService } from '../../../../../core/services/toast.service';
 import { MnDropdownComponent } from '../../../../../shared/components/dropdown';
 import { MDModalModule } from '../../../../../shared/components/modals';
 import { PageTitleComponent } from '../../../../../shared/components/page-title/page-title.component';
-import { CourseChapterListComponent } from '../../components/course-chapter-list/course-chapter-list.component';
-import { CourseEditModalComponent } from '../../components/course-edit-modal/course-edit-modal.component';
+import { ChapterEditModalComponent } from '../../components/chapter-edit-modal/chapter-edit-modal.component';
+import { ChapterLessonListComponent } from '../../components/chapter-lesson-list/chapter-lesson-list.component';
 
 @Component({
-  selector: 'app-course-detail',
+  selector: 'app-chapter-detail',
   standalone: true,
   imports: [
     PageTitleComponent,
@@ -23,17 +23,19 @@ import { CourseEditModalComponent } from '../../components/course-edit-modal/cou
     LucideAngularModule,
     MnDropdownComponent,
     MDModalModule,
-    CourseEditModalComponent,
-    CourseChapterListComponent,
+    ChapterEditModalComponent,
+    RouterLink,
+    ChapterLessonListComponent,
   ],
-  templateUrl: './course-detail.component.html',
-  styleUrl: './course-detail.component.scss',
+  templateUrl: './chapter-detail.component.html',
+  styleUrl: './chapter-detail.component.scss',
 })
-export class CourseDetailComponent {
-  isLoadingCourse: boolean = false;
-  isDeletingCourse: boolean = false;
-  course: Course | null = null;
+export class ChapterDetailComponent {
+  isLoadingChapter: boolean = false;
+  isDeletingChapter: boolean = false;
+  chapter: Chapter | null = null;
   courseId: string | null = null;
+  chapterId: string | null = null;
 
   constructor(
     private _toastService: ToastService,
@@ -44,51 +46,52 @@ export class CourseDetailComponent {
     private _translateService: TranslateService
   ) {
     this.courseId = this._activatedRoute.snapshot.paramMap.get('id');
+    this.chapterId = this._activatedRoute.snapshot.paramMap.get('chapterId');
   }
 
   ngOnInit() {
-    if (this.courseId) {
-      this.getCourse();
+    if (this.chapterId) {
+      this.getChapter();
     }
   }
 
-  getCourse() {
-    this.isLoadingCourse = true;
+  getChapter() {
+    this.isLoadingChapter = true;
     this._httpService
-      .get(`admin-panel/courses/${this.courseId}`, {
+      .get(`admin-panel/chapters/${this.chapterId}`, {
         params: {
-          relations: 'competencies,tools',
+          relations: 'course',
         },
       })
       .subscribe({
         next: (res: any) => {
-          this.course = res.data;
+          this.chapter = res.data;
         },
         error: (error: HttpFormattedErrorResponse) => {
           if (error.status !== 401) {
             this._toastService.error(error.message, this._translateService.instant('failed'));
           }
 
-          this._router.navigateByUrl('/application/courses');
+          this._router.navigateByUrl(`/application/courses/${this.courseId}`);
         },
       })
       .add(() => {
-        this.isLoadingCourse = false;
+        this.isLoadingChapter = false;
       });
   }
 
-  deleteCourse() {
-    if (this.isDeletingCourse || !this.course) {
+  deleteChapter() {
+    if (this.isDeletingChapter || !this.chapter) {
       return;
     }
 
-    this.isDeletingCourse = true;
+    this.isDeletingChapter = true;
     this._httpService
-      .delete(`admin-panel/courses/${this.course.id}`)
+      .delete(`admin-panel/chapters/${this.chapter.id}`)
       .subscribe({
         next: (res: any) => {
           this._toastService.success(res.message, this._translateService.instant('success'));
-          this._router.navigateByUrl('/application/courses', { replaceUrl: true });
+          this._router.navigateByUrl(`/application/courses/${this.courseId}`, { replaceUrl: true });
         },
         error: (error: HttpFormattedErrorResponse) => {
           if (error.status !== 401) {
@@ -97,7 +100,7 @@ export class CourseDetailComponent {
         },
       })
       .add(() => {
-        this.isDeletingCourse = false;
+        this.isDeletingChapter = false;
       });
   }
 
