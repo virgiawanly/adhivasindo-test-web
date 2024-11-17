@@ -9,7 +9,7 @@ export const APPLICATION_ROUTES: Routes = [
     children: [
       {
         path: 'dashboard',
-        // canActivate: [authGuard],
+        canActivate: [authGuard],
         loadChildren: () => import('./dashboard/dashboard.routes').then((m) => m.DASHBOARD_ROUTES),
       },
       {

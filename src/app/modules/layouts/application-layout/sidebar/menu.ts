@@ -15,7 +15,7 @@ export const MENU: MenuItem[] = [
   },
   {
     id: 0,
-    label: 'users',
+    label: 'Users',
     icon: 'users',
     link: '/application/users',
   },
