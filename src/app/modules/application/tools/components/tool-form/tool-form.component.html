@@ -1,0 +1,39 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <button type="submit" class="hidden"></button>
+  <div class="grid gap-5">
+    <div class="w-full">
+      <label for="name" class="inline-block mb-2 text-base font-medium">
+        {{ 'name' | translate | titlecase }} <span class="text-red-500">*</span>
+      </label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="form-control form-input"
+        [placeholder]="'placeholders.input-field' | translate: { field: 'attributes.name' | translate }"
+        maxlength="100"
+      />
+      @if (form.get('name')?.hasError('required') && form.get('name')?.touched) {
+        <div class="mt-1 text-sm text-red-500">{{ 'validation.required' | translate }}</div>
+      } @else if (form.get('name')?.hasError('maxLength') && form.get('name')?.touched) {
+        <div class="mt-1 text-sm text-red-500">{{ 'validation.max-length' | translate: { max: 255 } }}</div>
+      }
+    </div>
+    <!--end col-->
+    <div class="w-full">
+      <label for="image" class="inline-block mb-2 text-base font-medium">
+        {{ 'image' | translate | titlecase }}
+        @if (!tool) {
+          <span class="text-red-500">*</span>
+        }
+      </label>
+      <div class="w-full">
+        <input id="image" type="file" (change)="onFileChange($event)" [placeholder]="'placeholders.upload-file' | translate" accept="image/*" />
+      </div>
+      @if (form.get('image')?.hasError('required') && form.get('image')?.touched) {
+        <div class="mt-1 text-sm text-red-500">{{ 'validation.required' | translate }}</div>
+      }
+    </div>
+    <!--end col-->
+  </div>
+</form>

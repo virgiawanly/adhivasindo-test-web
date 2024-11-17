@@ -113,7 +113,8 @@
                     [appModalTrigger]="'logoutConfirmationModal'"
                     class="dropdown-item block cursor-pointer py-1.5 text-base font-medium text-slate-600 transition-all duration-200 ease-linear hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500 ltr:pr-4 rtl:pl-4"
                   >
-                    <lucide-angular name="log-out" [class]="'inline-block size-4 ltr:mr-2 rtl:ml-2'"></lucide-angular> {{ 'logout' | translate }}
+                    <lucide-angular name="log-out" [class]="'inline-block size-4 ltr:mr-2 rtl:ml-2'"></lucide-angular>
+                    {{ 'action.logout' | translate }}
                   </a>
                 </li>
               </ul>
@@ -162,7 +163,7 @@
         class="text-white btn border-custom-500 bg-custom-500 hover:border-custom-600 hover:bg-custom-600 hover:text-white focus:border-custom-600 focus:bg-custom-600 focus:text-white focus:ring focus:ring-custom-100 active:border-custom-600 active:bg-custom-600 active:text-white active:ring active:ring-custom-100 dark:ring-custom-400/20"
         (click)="logout()"
       >
-        {{ 'logout' | translate | titlecase }}
+        {{ 'action.logout' | translate | titlecase }}
       </button>
     </div>
   </div>
