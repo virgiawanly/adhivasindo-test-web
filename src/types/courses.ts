@@ -1,3 +1,4 @@
+import { Chapter } from './chapters';
 import { Tool } from './tools';
 
 export enum CourseStatus {
@@ -27,4 +28,5 @@ export interface Course {
   deleted_at?: string | null;
   competencies?: CourseCompetency[];
   tools?: Tool[];
+  chapters?: Chapter[];
 }

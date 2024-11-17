@@ -50,11 +50,13 @@
   "courses.competencies": "Competencies",
   "courses.tools": "Tools",
   "courses.details.page-title": "Course Detail",
+  "courses.chapters": "Chapters",
 
   "placeholders.input-field": "Enter {{field}}",
   "placeholders.upload-file": "Upload File",
   "placeholders.select-field": "Select {{field}}",
 
+  "attributes.title": "Title",
   "attributes.name": "name",
   "attributes.competencies": "Competencies",
   "attributes.competency": "Competency",
@@ -63,6 +65,7 @@
   "attributes.tools": "Tools",
   "attributes.status": "Status",
   "attributes.course": "Course",
+  "attributes.chapter": "Chapter",
 
   "validation.required": "Required",
   "validation.field-required": "Field {{field}} required",

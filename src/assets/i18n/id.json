@@ -50,12 +50,14 @@
   "courses.competencies": "Kompetensi",
   "courses.tools": "Tools/Teknologi",
   "courses.details.page-title": "Detail Kursus",
+  "courses.chapters": "List Chapter",
 
   "placeholders.input-field": "Masukkan {{field}}",
   "placeholders.upload-file": "Unggah file",
   "placeholders.select-field": "Pilih {{field}}",
 
-  "attributes.name": "nama",
+  "attributes.title": "Judul",
+  "attributes.name": "Nama",
   "attributes.competencies": "Kompetensi",
   "attributes.competency": "Kompetensi",
   "attributes.description": "Deskripsi",
@@ -63,6 +65,7 @@
   "attributes.tools": "Tools",
   "attributes.status": "Status",
   "attributes.course": "Kursus",
+  "attributes.chapter": "Chapter",
 
   "validation.required": "Wajib diisi",
   "validation.field-required": "{{field}} wajib diisi",
