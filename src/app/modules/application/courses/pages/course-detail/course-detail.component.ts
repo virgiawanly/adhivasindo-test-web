@@ -10,12 +10,22 @@ import { ToastService } from '../../../../../core/services/toast.service';
 import { MnDropdownComponent } from '../../../../../shared/components/dropdown';
 import { MDModalModule } from '../../../../../shared/components/modals';
 import { PageTitleComponent } from '../../../../../shared/components/page-title/page-title.component';
+import { CourseChapterListComponent } from '../../components/course-chapter-list/course-chapter-list.component';
 import { CourseEditModalComponent } from '../../components/course-edit-modal/course-edit-modal.component';
 
 @Component({
   selector: 'app-course-detail',
   standalone: true,
-  imports: [PageTitleComponent, CommonModule, TranslateModule, LucideAngularModule, MnDropdownComponent, MDModalModule, CourseEditModalComponent],
+  imports: [
+    PageTitleComponent,
+    CommonModule,
+    TranslateModule,
+    LucideAngularModule,
+    MnDropdownComponent,
+    MDModalModule,
+    CourseEditModalComponent,
+    CourseChapterListComponent,
+  ],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.scss',
 })

@@ -6,7 +6,7 @@
 ></app-page-title>
 
 @if (course) {
-  <div class="grid grid-cols-1 gap-8">
+  <div class="grid grid-cols-1 gap-3">
     <div class="w-full">
       <div class="card">
         <div class="flex flex-col items-start gap-6 card-body md:flex-row">
@@ -93,6 +93,7 @@
         </div>
       </div>
     </div>
+    <app-course-chapter-list [courseId]="course.id"></app-course-chapter-list>
   </div>
 }
 
