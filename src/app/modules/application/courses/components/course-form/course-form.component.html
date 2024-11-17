@@ -1,0 +1,149 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <button type="submit" class="hidden"></button>
+  <div class="grid gap-5 pb-10">
+    <div class="w-full">
+      <label for="name" class="inline-block mb-2 text-base font-medium">
+        {{ 'attributes.name' | translate | titlecase }} <span class="text-red-500">*</span>
+      </label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="form-control form-input"
+        [placeholder]="'placeholders.input-field' | translate: { field: 'attributes.name' | translate }"
+        maxlength="255"
+      />
+      @if (form.get('name')?.hasError('required') && form.get('name')?.touched) {
+        <div class="mt-1 text-sm text-red-500">{{ 'validation.required' | translate }}</div>
+      } @else if (form.get('name')?.hasError('maxLength') && form.get('name')?.touched) {
+        <div class="mt-1 text-sm text-red-500">{{ 'validation.max-length' | translate: { max: 255 } }}</div>
+      }
+    </div>
+    <!--end col-->
+
+    <div class="w-full">
+      <label for="description" class="inline-block mb-2 text-base font-medium">
+        {{ 'attributes.description' | translate | titlecase }}
+      </label>
+      <textarea
+        type="text"
+        id="description"
+        formControlName="description"
+        class="resize-y form-control form-input"
+        rows="8"
+        [placeholder]="'placeholders.input-field' | translate: { field: 'attributes.description' | translate }"
+      ></textarea>
+    </div>
+    <!--end col-->
+
+    <div class="w-full">
+      <label for="status" class="inline-block mb-2 text-base font-medium">
+        {{ 'attributes.status' | translate | titlecase }} <span class="text-red-500">*</span>
+      </label>
+      <div class="flex items-center gap-5">
+        <label for="status-draft" class="flex items-center gap-2">
+          <input
+            id="status-draft"
+            type="radio"
+            class="border rounded-full appearance-none cursor-pointer size-4 bg-slate-100 border-slate-200 dark:bg-zink-600 dark:border-zink-500 checked:bg-custom-500 checked:border-custom-500 dark:checked:bg-custom-500 dark:checked:border-custom-500"
+            formControlName="status"
+            value="draft"
+          />
+          <span class="font-semibold cursor-pointer">{{ 'draft' | translate | titlecase }}</span>
+        </label>
+        <label for="status-published" class="flex items-center gap-2">
+          <input
+            id="status-published"
+            type="radio"
+            class="border rounded-full appearance-none cursor-pointer size-4 bg-slate-100 border-slate-200 dark:bg-zink-600 dark:border-zink-500 checked:bg-custom-500 checked:border-custom-500 dark:checked:bg-custom-500 dark:checked:border-custom-500"
+            formControlName="status"
+            value="published"
+          />
+          <span class="font-semibold cursor-pointer">{{ 'published' | translate | titlecase }}</span>
+        </label>
+      </div>
+    </div>
+    <!-- end col -->
+
+    <div class="w-full">
+      <label for="tools" class="inline-block mb-2 text-base font-medium">
+        {{ 'attributes.tools' | translate | titlecase }}
+      </label>
+      <ng-select
+        bindLabel="name"
+        bindValue="id"
+        formControlName="tool_ids"
+        [items]="toolOptions"
+        [placeholder]="'placeholders.select-field' | translate: { field: 'attributes.tools' | translate }"
+        [multiple]="true"
+        [closeOnSelect]="false"
+        (open)="getToolOptions('')"
+        (search)="searchToolListener$.next($event.term)"
+      ></ng-select>
+    </div>
+    <!--end col-->
+
+    <div class="w-full">
+      <label for="competencies" class="inline-block mb-2 text-base font-medium">
+        {{ 'attributes.competencies' | translate | titlecase }}
+      </label>
+      <div class="grid gap-3" formArrayName="competencies">
+        @for (competency of competencies.controls; track $index) {
+          <div class="flex items-start justify-between w-full gap-2">
+            <div class="flex-1" [formGroupName]="$index">
+              <input
+                type="text"
+                [id]="'competency-' + $index"
+                formControlName="name"
+                class="form-control form-input"
+                [placeholder]="'placeholders.input-field' | translate: { field: 'attributes.name' | translate }"
+                maxlength="255"
+              />
+              @if (competency.get('name')?.hasError('required') && competency.get('name')?.touched) {
+                <div class="mt-1 text-sm text-red-500">{{ 'validation.required' | translate }}</div>
+              } @else if (competency.get('name')?.hasError('maxLength') && competency.get('name')?.touched) {
+                <div class="mt-1 text-sm text-red-500">{{ 'validation.max-length' | translate: { max: 255 } }}</div>
+              }
+            </div>
+            <div class="flex items-center">
+              <button
+                type="button"
+                (click)="removeCompetency($index)"
+                [disabled]="competencies.length <= 1"
+                class="grid px-3 text-red-600 border border-red-600 rounded h-9 btn place-items-center hover:bg-red-600 hover:text-white active:text-white disabled:text-gray-400 disabled:bg-gray-100 disabled:border-none dark:disabled:bg-zink-500 dark:disabled:border-zink-500"
+              >
+                <lucide-angular name="trash-2" [class]="'h-4'"></lucide-angular>
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="flex items-center justify-start pt-3">
+        <button
+          type="button"
+          class="bg-white btn border-custom-500 text-custom-500 hover:border-custom-600 hover:bg-custom-600 hover:text-white focus:border-custom-600 focus:bg-custom-600 focus:text-white focus:ring focus:ring-custom-100 active:border-custom-600 active:bg-custom-600 active:text-white active:ring active:ring-custom-100 dark:bg-transparent dark:ring-custom-400/20 dark:hover:bg-custom-500 dark:focus:bg-custom-500"
+          (click)="addCompetency()"
+        >
+          {{ 'general.add' | translate | titlecase }}
+        </button>
+      </div>
+    </div>
+    <!--end col-->
+
+    <div class="w-full">
+      <label for="image" class="inline-block mb-2 text-base font-medium">
+        {{ 'attributes.image' | translate | titlecase }}
+        @if (!course) {
+          <span class="text-red-500">*</span>
+        }
+      </label>
+      <div class="w-full">
+        <input id="image" type="file" (change)="onFileChange($event)" [placeholder]="'placeholders.upload-file' | translate" accept="image/*" />
+      </div>
+      @if (form.get('image')?.hasError('required') && form.get('image')?.touched) {
+        <div class="mt-1 text-sm text-red-500">{{ 'validation.required' | translate }}</div>
+      }
+    </div>
+    <!--end col-->
+  </div>
+</form>

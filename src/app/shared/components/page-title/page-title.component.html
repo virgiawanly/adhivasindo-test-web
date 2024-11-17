@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
-  <div class="flex grow items-center">
+  <div class="flex items-center grow">
     <a *ngIf="backbuttonurl" routerLink="{{ backbuttonurl }}" class="flex items-center">
       <lucide-angular name="chevron-left" [class]="'rtl-rotate-180 size-6'"></lucide-angular>
     </a>
@@ -8,14 +8,14 @@
     </a>
     <h5 *ngIf="!backbuttonurl" class="text-16">{{ title }}</h5>
   </div>
-  <ul class="flex shrink-0 items-center gap-2 text-sm font-normal">
+  <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
     <li
       class="relative before:absolute before:-top-[3px] before:font-remix before:text-[18px] before:text-slate-400 before:content-['\ea54'] dark:text-zink-200 ltr:pr-4 ltr:before:-right-1 rtl:pl-4 rtl:before:-left-1"
     >
-      <a routerLink="{{ pagetitleurl }}" class="text-slate-400 dark:text-zink-200">{{ pagetitle }}</a>
+      <a routerLink="{{ pagetitleurl }}" class="text-slate-400 dark:text-zink-200">{{ title }}</a>
     </li>
     <li class="text-slate-700 dark:text-zink-100">
-      {{ title }}
+      {{ pagetitle }}
     </li>
   </ul>
 </div>
