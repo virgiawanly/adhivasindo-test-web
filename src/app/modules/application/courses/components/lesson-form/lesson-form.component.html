@@ -1,0 +1,92 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <button type="submit" class="hidden"></button>
+  <div class="grid gap-5">
+    <div class="w-full">
+      <label for="title" class="inline-block mb-2 text-base font-medium">
+        {{ 'title' | translate | titlecase }} <span class="text-red-500">*</span>
+      </label>
+      <input
+        type="text"
+        id="title"
+        formControlName="title"
+        class="form-control form-input"
+        [placeholder]="'placeholders.input-field' | translate: { field: 'attributes.title' | translate }"
+        maxlength="255"
+      />
+      @if (form.get('title')?.hasError('required') && form.get('title')?.touched) {
+        <div class="mt-1 text-sm text-red-500">{{ 'validation.required' | translate }}</div>
+      } @else if (form.get('title')?.hasError('maxLength') && form.get('title')?.touched) {
+        <div class="mt-1 text-sm text-red-500">{{ 'validation.max-length' | translate: { max: 255 } }}</div>
+      }
+    </div>
+    <!--end col-->
+
+    <div class="w-full">
+      <label for="type" class="inline-block mb-2 text-base font-medium">
+        {{ 'attributes.type' | translate }} <span class="text-red-500">*</span>
+      </label>
+      <div class="flex items-center gap-5">
+        <label for="type-video" class="flex items-center gap-2">
+          <input
+            id="type-video"
+            type="radio"
+            class="border rounded-full appearance-none cursor-pointer size-4 bg-slate-100 border-slate-200 dark:bg-zink-600 dark:border-zink-500 checked:bg-custom-500 checked:border-custom-500 dark:checked:bg-custom-500 dark:checked:border-custom-500"
+            formControlName="type"
+            value="video"
+          />
+          <span class="font-semibold cursor-pointer">{{ 'video' | translate | titlecase }}</span>
+        </label>
+        <label for="type-text" class="flex items-center gap-2">
+          <input
+            id="type-text"
+            type="radio"
+            class="border rounded-full appearance-none cursor-pointer size-4 bg-slate-100 border-slate-200 dark:bg-zink-600 dark:border-zink-500 checked:bg-custom-500 checked:border-custom-500 dark:checked:bg-custom-500 dark:checked:border-custom-500"
+            formControlName="type"
+            value="text"
+          />
+          <span class="font-semibold cursor-pointer">{{ 'text' | translate | titlecase }}</span>
+        </label>
+      </div>
+    </div>
+    <!-- end col -->
+
+    @if (form.get('type')?.value === 'text') {
+      <div class="w-full">
+        <label for="text_content" class="inline-block mb-2 text-base font-medium">
+          {{ 'attributes.text-content' | translate | titlecase }} <span class="text-red-500">*</span>
+        </label>
+        <textarea
+          type="text"
+          id="text_content"
+          formControlName="text_content"
+          class="form-control form-input resize-y"
+          rows="10"
+          [placeholder]="'placeholders.input-field' | translate: { field: 'attributes.text-content' | translate }"
+        ></textarea>
+        @if (form.get('text_content')?.hasError('required') && form.get('text_content')?.touched) {
+          <div class="mt-1 text-sm text-red-500">{{ 'validation.required' | translate }}</div>
+        }
+      </div>
+      <!--end col-->
+    } @else if (form.get('type')?.value === 'video') {
+      <div class="w-full">
+        <label for="video_url" class="inline-block mb-2 text-base font-medium">
+          {{ 'attributes.video-url' | translate }} <span class="text-red-500">*</span>
+        </label>
+        <input
+          type="text"
+          id="video_url"
+          formControlName="video_url"
+          class="form-control form-input"
+          [placeholder]="'placeholders.input-field' | translate: { field: 'attributes.video-url' | translate }"
+        />
+        @if (form.get('video_url')?.hasError('required') && form.get('video_url')?.touched) {
+          <div class="mt-1 text-sm text-red-500">{{ 'validation.required' | translate }}</div>
+        } @else if (form.get('video_url')?.hasError('maxLength') && form.get('video_url')?.touched) {
+          <div class="mt-1 text-sm text-red-500">{{ 'validation.max-length' | translate: { max: 255 } }}</div>
+        }
+      </div>
+      <!--end col-->
+    }
+  </div>
+</form>

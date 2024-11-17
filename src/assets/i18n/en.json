@@ -51,6 +51,8 @@
   "courses.tools": "Tools",
   "courses.details.page-title": "Course Detail",
   "courses.chapters": "Chapters",
+  "courses.chapters.page-title": "Chapter Detail",
+  "courses.lessons": "Lessons",
 
   "placeholders.input-field": "Enter {{field}}",
   "placeholders.upload-file": "Upload File",
@@ -66,6 +68,11 @@
   "attributes.status": "Status",
   "attributes.course": "Course",
   "attributes.chapter": "Chapter",
+  "attributes.type": "Type",
+  "attributes.video-url": "Video URL",
+  "attributes.lesson": "Lesson",
+  "attributes.lessons": "Lessons",
+  "attributes.text-content": "Text Content",
 
   "validation.required": "Required",
   "validation.field-required": "Field {{field}} required",
