@@ -1,0 +1,130 @@
+<app-page-title
+  [title]="'users.list-title' | translate | titlecase"
+  [pagetitle]="'users.page-title' | translate | titlecase"
+  pagetitleurl="/application/users"
+></app-page-title>
+
+<div class="grid grid-cols-1 gap-x-5 xl:grid-cols-12">
+  <div class="xl:col-span-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="flex items-center">
+          <h6 class="grow text-15">{{ 'users.list-title' | translate | titlecase }}</h6>
+        </div>
+      </div>
+      <div class="card-body border-y border-dashed border-slate-200 !py-3.5 dark:border-zink-500">
+        <div class="grid grid-cols-1 gap-5 md:grid-cols-12">
+          <div class="relative md:col-span-6 lg:col-span-4">
+            <input
+              type="text"
+              class="search form-control form-input ltr:pl-8 rtl:pr-8"
+              [placeholder]="'general.data-search-placeholder' | translate"
+              autocomplete="off"
+              [(ngModel)]="userSearch"
+              (ngModelChange)="onSearchUser($event)"
+            />
+            <lucide-angular
+              name="search"
+              [class]="
+                'absolute top-2.5 inline-block size-4 fill-slate-100 text-slate-500 dark:fill-zink-600 dark:text-zink-200 ltr:left-2.5 rtl:right-2.5'
+              "
+            ></lucide-angular>
+          </div>
+        </div>
+      </div>
+      <div class="card-body !pt-0">
+        <div class="-mx-5 -mb-5 overflow-x-auto">
+          <!-- user table -->
+          <ngx-datatable
+            #userTable
+            [rows]="users"
+            [columnMode]="'force'"
+            [headerHeight]="42"
+            [footerHeight]="60"
+            [rowHeight]="'auto'"
+            [scrollbarH]="true"
+            [offset]="userPagination.page"
+            [count]="userPagination.totalItems"
+            [limit]="userPagination.size"
+            [footerHeight]="users.length ? 60 : 0"
+            [loadingIndicator]="true"
+            [externalSorting]="true"
+            (sort)="onSort($event)"
+          >
+            @for (column of columns; track $index) {
+              <ngx-datatable-column
+                [name]="column.name ?? '' | translate | titlecase"
+                [prop]="column.prop ?? ''"
+                [width]="column.width ?? 100"
+                [resizeable]="column.resizeable ?? true"
+                [sortable]="column.sortable ?? true"
+                headerClass="text-left relative bg-slate-100 dark:bg-zink-600 after:absolute ltr:after:border-l-2 rtl:after:border-r-2 ltr:after:left-0 rtl:after:right-0 after:top-0 after:bottom-0 after:border-transparent [&.active]:after:border-custom-500 [&.active]:bg-slate-100 dark:[&.active]:bg-zink-600 px-3.5 py-2.5 first:pl-5 last:pr-5 font-semibold sort"
+                [cellClass]="isLoadingUsers ? 'opacity-50 px-3.5 py-2.5 first:pl-5 overflow-visible' : 'px-3.5 py-2.5 first:pl-5 overflow-visible'"
+              >
+                <ng-template ngx-datatable-cell-template let-row="row" let-value="value" let-rowIndex="rowIndex">
+                  <div class="line-clamp-3">
+                    {{ value }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            }
+
+            @if (users.length) {
+              <ngx-datatable-footer class="userTablefooter">
+                <ng-template ngx-datatable-footer-template>
+                  <div class="flex items-center justify-center w-full px-5 md:justify-between">
+                    <div class="hidden grow md:block">
+                      <p class="text-slate-500 dark:text-zink-200">
+                        Showing <b>{{ users.length }}</b> of <b>{{ userPagination.totalItems }}</b> Results
+                      </p>
+                    </div>
+                    <pagination-controls
+                      [darkLinks]="true"
+                      [boundryLinks]="false"
+                      previousLabel="Prev"
+                      nextLabel="Next"
+                      [itemsPerPage]="userPagination.size"
+                      [currentPage]="userPagination.page"
+                      [total]="userPagination.totalItems"
+                      (pageChanged)="onPageNumberChange($event)"
+                    >
+                    </pagination-controls>
+                  </div>
+                </ng-template>
+              </ngx-datatable-footer>
+            }
+          </ngx-datatable>
+          <!-- ! user table -->
+
+          @if (!users.length && isLoadingUsers) {
+            <!-- loading -->
+            <div class="noresult">
+              <div class="grid text-center h-36 place-items-center">
+                <div class="inline-block border-2 rounded-full size-4 animate-spin border-custom-500 border-l-transparent"></div>
+              </div>
+            </div>
+            <!-- ! loading -->
+          }
+
+          @if (!users.length && !isLoadingUsers) {
+            <!-- no result -->
+            <div class="noresult">
+              <div class="grid h-36 place-items-center">
+                <div class="text-center">
+                  <lucide-angular name="search" [class]="'mx-auto size-6 fill-sky-100 text-sky-500 dark:fill-sky-500/20'"></lucide-angular>
+                  <p class="mt-2 mb-0 text-slate-500 dark:text-zink-200">
+                    <span>{{ 'general.no-data-found' | translate | titlecase }}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- ! no result -->
+          }
+        </div>
+      </div>
+    </div>
+    <!--end card-->
+  </div>
+  <!--end col-->
+</div>
+<!--end grid-->
