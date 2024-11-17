@@ -13,6 +13,11 @@ export const APPLICATION_ROUTES: Routes = [
         loadChildren: () => import('./dashboard/dashboard.routes').then((m) => m.DASHBOARD_ROUTES),
       },
       {
+        path: 'tools',
+        canActivate: [authGuard],
+        loadChildren: () => import('./tools/tools.routes').then((m) => m.TOOLS_ROUTES),
+      },
+      {
         path: '**',
         pathMatch: 'full',
         redirectTo: 'dashboard',
