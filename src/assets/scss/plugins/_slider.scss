@@ -1,0 +1,28 @@
+.slick-dotted.slick-slider {
+  @apply mb-0;
+}
+
+.slick-slider {
+  .slick-dots {
+    @apply mb-10;
+
+    li button {
+      @apply h-4 w-4 rounded-full border-4 border-solid border-white bg-custom-500 p-0 opacity-30 outline outline-1 outline-custom-500 before:hidden dark:border-zinc-900;
+    }
+
+    li.slick-active {
+      button {
+        @apply opacity-100;
+      }
+    }
+  }
+
+  .slick-next {
+    right: 20px;
+  }
+
+  .slick-prev {
+    left: 20px;
+    z-index: 1;
+  }
+}

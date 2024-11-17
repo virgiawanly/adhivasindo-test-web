@@ -1,0 +1,42 @@
+.custom-mode-ckeditor {
+  .ck-editor__editable_inline {
+    min-height: 150px !important;
+    @apply dark:border-slate-50 dark:bg-zink-700 dark:text-zink-100 dark:placeholder:text-zink-200 #{!important};
+  }
+
+  .ck-editor__editable_inline ul {
+    @apply ml-5;
+  }
+
+  .ck-editor__editable_inline ol {
+    @apply ml-5;
+  }
+
+  .ck.ck-toolbar {
+    @apply dark:border-zink-500 dark:bg-zink-700 dark:text-zink-100 dark:placeholder:text-zink-200 #{!important};
+  }
+
+  .ck.ck-button.ck-off {
+    @apply dark:border-zink-500 dark:bg-zink-700 dark:text-zink-100 dark:placeholder:text-zink-200 #{!important};
+  }
+
+  .ck.ck-dropdown__panel {
+    @apply dark:border-zink-500 dark:bg-zink-700 dark:text-zink-100 dark:placeholder:text-zink-200 #{!important};
+  }
+
+  .ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) {
+    @apply border-slate-200 dark:border-zink-500 #{!important};
+  }
+
+  .ck.ck-editor__main > .ck-editor__editable.ck-focused {
+    @apply border-custom-500 ring-1 ring-custom-500 dark:border-custom-500 dark:ring-custom-400 #{!important};
+  }
+
+  .ck.ck-editor__top .ck-sticky-panel .ck-sticky-panel__content {
+    @apply dark:border-zink-500 dark:bg-zink-700 dark:text-zink-100 dark:placeholder:text-zink-200 #{!important};
+  }
+
+  .ck.ck-toolbar__separator {
+    @apply bg-slate-50 dark:bg-zink-500 #{!important};
+  }
+}

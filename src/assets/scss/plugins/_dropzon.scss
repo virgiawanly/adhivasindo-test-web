@@ -1,0 +1,24 @@
+#dropzone-preview-list {
+  dropzone > .dropzone.dz-wrapper .dz-message {
+    min-height: 200px !important;
+    @apply rounded-md border-slate-200 bg-slate-100 text-slate-500 dark:border-zink-500 dark:bg-zink-600 dark:text-zink-200;
+  }
+}
+
+.dropzone {
+  @apply border-0 bg-transparent p-0 #{!important};
+}
+
+#dropzone-preview2 {
+  dropzone > .dropzone.dz-wrapper .dz-message {
+    min-height: 200px !important;
+    @apply rounded-md border-slate-200 bg-white text-slate-500 dark:border-zink-500 dark:bg-zink-700 dark:text-zink-200;
+  }
+}
+
+#dropzone-preview3 {
+  dropzone > .dropzone.dz-wrapper .dz-message {
+    min-height: 100px !important;
+    @apply rounded-md border-slate-200 bg-white text-slate-500 dark:border-zink-500 dark:bg-zink-700 dark:text-zink-200;
+  }
+}

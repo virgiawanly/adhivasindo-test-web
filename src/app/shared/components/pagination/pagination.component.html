@@ -1,0 +1,71 @@
+<ul class="flex shrink-0 flex-wrap items-center gap-2">
+  @if (boundryLinks) {
+    <li>
+      <a
+        href="javascript:void(0)"
+        class="inline-flex h-8 items-center justify-center rounded border border-slate-200 bg-white px-3 text-slate-500 transition-all duration-150 ease-linear hover:bg-custom-50 hover:text-custom-500 focus:bg-custom-50 focus:text-custom-500 dark:border-zink-500 dark:bg-zink-700 dark:text-zink-200 dark:hover:bg-custom-500/10 dark:hover:text-custom-500 dark:focus:bg-custom-500/10 dark:focus:text-custom-500 [&.active]:border-custom-50 [&.active]:bg-custom-50 [&.active]:text-custom-500 [&.active]:hover:text-custom-700 dark:[&.active]:border-custom-500/10 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500 dark:[&.active]:hover:text-custom-700 [&.disabled]:cursor-auto [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300"
+        (click)="changePage(currentPage - 1)"
+        [class.disabled]="isPrevDisabled()"
+      >
+        <lucide-angular name="chevrons-left" [class]="'rtl-rotate-180 size-4'"></lucide-angular>
+      </a>
+    </li>
+  }
+  <li>
+    <a
+      href="javascript:void(0)"
+      class="inline-flex h-8 items-center justify-center rounded border border-slate-200 bg-white px-3 text-slate-500 transition-all duration-150 ease-linear hover:bg-custom-50 hover:text-custom-500 focus:bg-custom-50 focus:text-custom-500 dark:border-zink-500 dark:bg-zink-700 dark:text-zink-200 dark:hover:bg-custom-500/10 dark:hover:text-custom-500 dark:focus:bg-custom-500/10 dark:focus:text-custom-500 [&.active]:border-custom-50 [&.active]:bg-custom-50 [&.active]:text-custom-500 [&.active]:hover:text-custom-700 dark:[&.active]:border-custom-500/10 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500 dark:[&.active]:hover:text-custom-700 [&.disabled]:cursor-auto [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300"
+      (click)="changePage(currentPage - 1)"
+      [class.disabled]="isPrevDisabled()"
+    >
+      <lucide-angular name="chevron-left" [class]="'rtl-rotate-180 size-4'"> </lucide-angular> {{ previousLabel }}
+    </a>
+  </li>
+
+  @if (darkLinks) {
+    <li *ngFor="let page of pages">
+      <a
+        href="javascript:void(0)"
+        class="inline-flex size-8 items-center justify-center rounded border border-slate-200 bg-white text-slate-500 transition-all duration-150 ease-linear hover:bg-custom-100 hover:text-custom-500 focus:bg-custom-50 focus:text-custom-500 dark:border-zink-500 dark:bg-zink-700 dark:text-zink-200 dark:hover:bg-custom-500/10 dark:hover:text-custom-500 dark:focus:bg-custom-500/10 dark:focus:text-custom-500 [&.active]:border-custom-500 [&.active]:bg-custom-500 [&.active]:text-white [&.active]:hover:text-custom-700 dark:[&.active]:border-custom-500 dark:[&.active]:bg-custom-500 dark:[&.active]:text-white dark:[&.active]:hover:text-custom-700 [&.disabled]:cursor-auto [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300"
+        (click)="changePage(page)"
+        [class.active]="currentPage === page"
+      >
+        {{ page }}
+      </a>
+    </li>
+  } @else {
+    <li *ngFor="let page of pages">
+      <a
+        href="javascript:void(0)"
+        class="inline-flex size-8 items-center justify-center rounded border border-slate-200 bg-white text-slate-500 transition-all duration-150 ease-linear hover:bg-custom-50 hover:text-custom-500 focus:bg-custom-50 focus:text-custom-500 dark:border-zink-500 dark:bg-zink-700 dark:text-zink-200 dark:hover:bg-custom-500/10 dark:hover:text-custom-500 dark:focus:bg-custom-500/10 dark:focus:text-custom-500 [&.active]:border-custom-50 [&.active]:bg-custom-50 [&.active]:text-custom-500 [&.active]:hover:text-custom-700 dark:[&.active]:border-custom-500/10 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500 dark:[&.active]:hover:text-custom-700 [&.disabled]:cursor-auto [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300"
+        (click)="changePage(page)"
+        [class.active]="currentPage === page"
+      >
+        {{ page }}
+      </a>
+    </li>
+  }
+  <li>
+    <a
+      href="javascript:void(0)"
+      class="inline-flex h-8 items-center justify-center rounded border border-slate-200 bg-white px-3 text-slate-500 transition-all duration-150 ease-linear hover:bg-custom-50 hover:text-custom-500 focus:bg-custom-50 focus:text-custom-500 dark:border-zink-500 dark:bg-zink-700 dark:text-zink-200 dark:hover:bg-custom-500/10 dark:hover:text-custom-500 dark:focus:bg-custom-500/10 dark:focus:text-custom-500 [&.active]:border-custom-50 [&.active]:bg-custom-50 [&.active]:text-custom-500 [&.active]:hover:text-custom-700 dark:[&.active]:border-custom-500/10 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500 dark:[&.active]:hover:text-custom-700 [&.disabled]:cursor-auto [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300"
+      (click)="changePage(currentPage + 1)"
+      [class.disabled]="isNextDisabled()"
+    >
+      {{ nextLabel }}<lucide-angular name="chevron-right" [class]="'rtl-rotate-180 size-4'"></lucide-angular>
+    </a>
+  </li>
+
+  @if (boundryLinks) {
+    <li>
+      <a
+        href="javascript:void(0)"
+        class="inline-flex h-8 items-center justify-center rounded border border-slate-200 bg-white px-3 text-slate-500 transition-all duration-150 ease-linear hover:bg-custom-50 hover:text-custom-500 focus:bg-custom-50 focus:text-custom-500 dark:border-zink-500 dark:bg-zink-700 dark:text-zink-200 dark:hover:bg-custom-500/10 dark:hover:text-custom-500 dark:focus:bg-custom-500/10 dark:focus:text-custom-500 [&.active]:border-custom-50 [&.active]:bg-custom-50 [&.active]:text-custom-500 [&.active]:hover:text-custom-700 dark:[&.active]:border-custom-500/10 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500 dark:[&.active]:hover:text-custom-700 [&.disabled]:cursor-auto [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300"
+        (click)="changePage(currentPage + 1)"
+        [class.disabled]="isNextDisabled()"
+      >
+        <lucide-angular name="chevrons-right" [class]="'rtl-rotate-180 size-4'"></lucide-angular>
+      </a>
+    </li>
+  }
+</ul>

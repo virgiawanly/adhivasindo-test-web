@@ -1,0 +1,13 @@
+<app-page-title [title]="'Dashboard'" [pagetitle]="'Dashboard'" pagetitleurl="/"></app-page-title>
+
+<div class="grid grid-cols-1 gap-x-5 xl:grid-cols-12">
+  <div class="xl:col-span-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="flex items-center">
+          <h6 class="grow text-15">{{ 'Welcome' | translate | titlecase }} {{ user?.name | titlecase }}!</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

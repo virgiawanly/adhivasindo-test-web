@@ -1,0 +1,20 @@
+<div
+  class="bg-body-bg font-public text-base text-body group-data-[skin=bordered]:bg-body-bordered dark:bg-zink-950 dark:text-zink-100 group-data-[skin=bordered]:dark:bg-zink-900"
+>
+  <div class="group-data-[sidebar-size=sm]:relative group-data-[sidebar-size=sm]:min-h-screen">
+    <app-sidebar></app-sidebar>
+    <app-topbar></app-topbar>
+    <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-screen">
+      <div
+        class="px-4 pb-[calc(theme('spacing.header')_*_0.8)] pt-[calc(theme('spacing.header')_*_1)] group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)] group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu"
+      >
+        <div class="container-fluid mx-auto group-data-[content=boxed]:max-w-boxed">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>
+
+<app-loading-screen [isOpen]="!isInitialLoaded"></app-loading-screen>

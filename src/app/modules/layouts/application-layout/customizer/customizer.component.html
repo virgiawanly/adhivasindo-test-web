@@ -1,0 +1,438 @@
+<div class="fixed bottom-6 right-12 hidden h-header items-center group-data-[navbar=hidden]:flex">
+  <button
+    [DrawerTrigger]="'customizerButton'"
+    type="button"
+    class="inline-flex size-12 items-center justify-center rounded-md bg-sky-500 p-0 text-sky-50 shadow-lg transition-all duration-200 ease-linear"
+  >
+    <lucide-angular name="settings" [class]="'inline-block size-5'"></lucide-angular>
+  </button>
+</div>
+
+<drawer id="customizerButton" [position]="'drawer-end'">
+  <div class="flex justify-between border-b border-slate-200 p-4 dark:border-zink-500">
+    <div class="grow">
+      <h5 class="mb-1 text-16">adhivasindo Theme Customizer</h5>
+      <p class="font-normal text-slate-500 dark:text-zink-200">Choose your themes & layouts etc.</p>
+    </div>
+    <div class="shrink-0">
+      <button dismissDrawer [DrawerDismiss]="'customizerButton'" class="text-slate-500 transition-all duration-150 ease-linear hover:text-slate-800 dark:text-zink-200 dark:hover:text-zink-50">
+        <lucide-angular name="x" [class]="'size-4'"></lucide-angular>
+      </button>
+    </div>
+  </div>
+  <div class="h-full overflow-y-auto p-6">
+    <div>
+      <h5 class="mb-3 text-15 capitalize underline">Choose Layouts</h5>
+      <div class="mb-5 grid grid-cols-1 gap-7 sm:grid-cols-2">
+        <div class="relative">
+          <input
+            id="layout-one"
+            name="dataLayout"
+            class="vertical-menu-btn absolute top-2 size-4 cursor-pointer appearance-none rounded-full border border-slate-300 bg-slate-100 checked:border-custom-500 checked:bg-custom-500 dark:border-zink-500 dark:bg-zink-400 ltr:right-2 rtl:left-2"
+            type="radio"
+            value="vertical"
+            (change)="changeTheme('vertical')"
+            [checked]="theme === 'vertical'"
+          />
+          <label class="block h-24 w-full cursor-pointer overflow-hidden rounded-lg border border-slate-200 p-0 dark:border-zink-500" for="layout-one">
+            <span class="flex h-full gap-0">
+              <span class="shrink-0">
+                <span class="flex h-full flex-col gap-1 border-slate-200 p-1 dark:border-zink-500 ltr:border-r rtl:border-l">
+                  <span class="mb-2 block rounded bg-slate-100 p-1 px-2 dark:bg-zink-400"></span>
+                  <span class="block bg-slate-100 p-1 px-2 pb-0 dark:bg-zink-500"></span>
+                  <span class="block bg-slate-100 p-1 px-2 pb-0 dark:bg-zink-500"></span>
+                  <span class="block bg-slate-100 p-1 px-2 pb-0 dark:bg-zink-500"></span>
+                </span>
+              </span>
+              <span class="grow">
+                <span class="flex h-full flex-col">
+                  <span class="block h-3 bg-slate-100 dark:bg-zink-500"></span>
+                  <span class="mt-auto block h-3 bg-slate-100 dark:bg-zink-500"></span>
+                </span>
+              </span>
+            </span>
+          </label>
+          <h5 class="mt-2 text-center text-15">Vertical</h5>
+        </div>
+
+        <div class="relative">
+          <input
+            id="layout-two"
+            name="dataLayout"
+            class="vertical-menu-btn absolute top-2 size-4 cursor-pointer appearance-none rounded-full border border-slate-300 bg-slate-100 checked:border-custom-500 checked:bg-custom-500 dark:border-zink-500 dark:bg-zink-400 ltr:right-2 rtl:left-2"
+            type="radio"
+            value="horizontal"
+            (change)="changeTheme('horizontal')"
+            [checked]="theme === 'horizontal'"
+          />
+          <label class="block h-24 w-full cursor-pointer overflow-hidden rounded-lg border border-slate-200 p-0 dark:border-zink-500" for="layout-two">
+            <span class="flex h-full flex-col gap-1">
+              <span class="flex items-center gap-1 bg-slate-100 p-1 dark:bg-zink-500">
+                <span class="ml-1 block rounded bg-white p-1 dark:bg-zink-500"></span>
+                <span class="ms-auto block bg-white p-1 px-2 pb-0 dark:bg-zink-500"></span>
+                <span class="block bg-white p-1 px-2 pb-0 dark:bg-zink-500"></span>
+              </span>
+              <span class="block bg-slate-100 p-1 dark:bg-zink-500"></span>
+              <span class="mt-auto block bg-slate-100 p-1 dark:bg-zink-500"></span>
+            </span>
+          </label>
+          <h5 class="mt-2 text-center text-15">Horizontal</h5>
+        </div>
+      </div>
+
+      <div id="semi-dark">
+        <div class="flex items-center">
+          <div class="relative mr-2 inline-block w-10 align-middle transition duration-200 ease-in">
+            <input
+              type="checkbox"
+              name="customDefaultSwitch"
+              value="dark"
+              id="customDefaultSwitch"
+              class="peer/published arrow-none absolute block size-5 cursor-pointer appearance-none rounded-full border-2 border-slate-200 bg-white/80 transition duration-300 ease-linear checked:right-0 checked:border-custom-500 checked:bg-white checked:bg-none dark:border-zink-500 dark:bg-zink-500 dark:checked:bg-zink-400"
+              (change)="changeSemiLayout($event)"
+            />
+            <label
+              for="customDefaultSwitch"
+              class="block h-5 cursor-pointer overflow-hidden rounded-full border border-slate-200 bg-slate-200 transition duration-300 ease-linear peer-checked/published:border-custom-500 peer-checked/published:bg-custom-500 dark:border-zink-500 dark:bg-zink-600"
+            ></label>
+          </div>
+          <label for="customDefaultSwitch" class="inline-block text-base font-medium">Semi Dark (Sidebar & Header)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <h5 class="mb-3 text-15 capitalize underline">Skin Layouts</h5>
+      <div class="mb-5 grid grid-cols-1 gap-7 sm:grid-cols-2">
+        <div class="relative">
+          <input
+            id="layoutSkitOne"
+            name="dataLayoutSkin"
+            class="vertical-menu-btn absolute top-2 size-4 cursor-pointer appearance-none rounded-full border border-slate-300 bg-slate-100 checked:border-custom-500 checked:bg-custom-500 dark:border-zink-500 dark:bg-zink-400 ltr:right-2 rtl:left-2"
+            type="radio"
+            value="default"
+            (change)="changeSkinLayout('default')"
+            [checked]="skin === 'default'"
+          />
+          <label class="block h-24 w-full cursor-pointer overflow-hidden rounded-lg border border-slate-200 bg-slate-50 p-0 dark:border-zink-500 dark:bg-zink-600" for="layoutSkitOne">
+            <span class="flex h-full gap-0">
+              <span class="shrink-0">
+                <span class="flex h-full flex-col gap-1 border-slate-200 p-1 dark:border-zink-500 ltr:border-r rtl:border-l">
+                  <span class="mb-2 block rounded bg-slate-100 p-1 px-2 dark:bg-zink-400"></span>
+                  <span class="block bg-slate-100 p-1 px-2 pb-0 dark:bg-zink-500"></span>
+                  <span class="block bg-slate-100 p-1 px-2 pb-0 dark:bg-zink-500"></span>
+                  <span class="block bg-slate-100 p-1 px-2 pb-0 dark:bg-zink-500"></span>
+                </span>
+              </span>
+              <span class="grow">
+                <span class="flex h-full flex-col">
+                  <span class="block h-3 bg-slate-100 dark:bg-zink-500"></span>
+                  <span class="mt-auto block h-3 bg-slate-100 dark:bg-zink-500"></span>
+                </span>
+              </span>
+            </span>
+          </label>
+          <h5 class="mt-2 text-center text-15">Default</h5>
+        </div>
+
+        <div class="relative">
+          <input
+            id="layoutSkitTwo"
+            name="dataLayoutSkin"
+            class="vertical-menu-btn absolute top-2 size-4 cursor-pointer appearance-none rounded-full border border-slate-300 bg-slate-100 checked:border-custom-500 checked:bg-custom-500 dark:border-zink-500 dark:bg-zink-400 ltr:right-2 rtl:left-2"
+            type="radio"
+            value="bordered"
+            [checked]="skin === 'bordered'"
+            (change)="changeSkinLayout('bordered')"
+          />
+          <label class="block h-24 w-full cursor-pointer overflow-hidden rounded-lg border border-slate-200 p-0 dark:border-zink-500" for="layoutSkitTwo">
+            <span class="flex h-full gap-0">
+              <span class="shrink-0">
+                <span class="flex h-full flex-col gap-1 border-slate-200 p-1 dark:border-zink-500 ltr:border-r rtl:border-l">
+                  <span class="mb-2 block rounded bg-slate-100 p-1 px-2 dark:bg-zink-400"></span>
+                  <span class="block bg-slate-100 p-1 px-2 pb-0 dark:bg-zink-500"></span>
+                  <span class="block bg-slate-100 p-1 px-2 pb-0 dark:bg-zink-500"></span>
+                  <span class="block bg-slate-100 p-1 px-2 pb-0 dark:bg-zink-500"></span>
+                </span>
+              </span>
+              <span class="grow">
+                <span class="flex h-full flex-col">
+                  <span class="block h-3 border-b border-slate-200 dark:border-zink-500"></span>
+                  <span class="mt-auto block h-3 border-t border-slate-200 dark:border-zink-500"></span>
+                </span>
+              </span>
+            </span>
+          </label>
+          <h5 class="mt-2 text-center text-15">Bordered</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <h5 class="mb-3 text-15 capitalize underline">Light & Dark</h5>
+      <div class="flex gap-3">
+        <button
+          type="button"
+          id="dataModeOne"
+          name="dataMode"
+          value="light"
+          (click)="changeLayoutMode('light')"
+          [ngClass]="{ active: mode == 'light' }"
+          class="btn border-dashed border-slate-200 bg-white text-slate-500 transition-all duration-200 ease-linear hover:border-slate-200 hover:bg-slate-50 hover:text-slate-500 dark:border-zink-400 dark:bg-zink-600 dark:text-zink-200 dark:hover:border-zink-400 dark:hover:bg-zink-600 dark:hover:text-zink-100 [&.active]:border-custom-200 [&.active]:bg-custom-50 [&.active]:text-custom-500 dark:[&.active]:border-custom-500/30 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500"
+        >
+          Light Mode
+        </button>
+        <button
+          type="button"
+          id="dataModeTwo"
+          name="dataMode"
+          value="dark"
+          (click)="changeLayoutMode('dark')"
+          [ngClass]="{ active: mode == 'dark' }"
+          class="btn border-dashed border-slate-200 bg-white text-slate-500 transition-all duration-200 ease-linear hover:border-slate-200 hover:bg-slate-50 hover:text-slate-500 dark:border-zink-400 dark:bg-zink-600 dark:text-zink-200 dark:hover:border-zink-400 dark:hover:bg-zink-600 dark:hover:text-zink-100 [&.active]:border-custom-200 [&.active]:bg-custom-50 [&.active]:text-custom-500 dark:[&.active]:border-custom-500/30 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500"
+        >
+          Dark Mode
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <h5 class="mb-3 text-15 capitalize underline">LTR & RTL</h5>
+      <div class="flex flex-wrap gap-3">
+        <button
+          type="button"
+          id="diractionOne"
+          name="dir"
+          value="ltr"
+          (click)="changeLayoutDirection('ltr')"
+          [ngClass]="{ active: dir == 'ltr' }"
+          class="btn border-dashed border-slate-200 bg-white text-slate-500 transition-all duration-200 ease-linear hover:border-slate-200 hover:bg-slate-50 hover:text-slate-500 dark:border-zink-400 dark:bg-zink-600 dark:text-zink-200 dark:hover:border-zink-400 dark:hover:bg-zink-600 dark:hover:text-zink-100 [&.active]:border-custom-200 [&.active]:bg-custom-50 [&.active]:text-custom-500 dark:[&.active]:border-custom-500/30 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500"
+        >
+          LTR Mode
+        </button>
+        <button
+          type="button"
+          id="diractionTwo"
+          name="dir"
+          value="rtl"
+          (click)="changeLayoutDirection('rtl')"
+          [ngClass]="{ active: dir == 'rtl' }"
+          class="btn border-dashed border-slate-200 bg-white text-slate-500 transition-all duration-200 ease-linear hover:border-slate-200 hover:bg-slate-50 hover:text-slate-500 dark:border-zink-400 dark:bg-zink-600 dark:text-zink-200 dark:hover:border-zink-400 dark:hover:bg-zink-600 dark:hover:text-zink-100 [&.active]:border-custom-200 [&.active]:bg-custom-50 [&.active]:text-custom-500 dark:[&.active]:border-custom-500/30 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500"
+        >
+          RTL Mode
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <!-- data-content -->
+      <h5 class="mb-3 text-15 capitalize underline">Content Width</h5>
+      <div class="flex gap-3">
+        <button
+          type="button"
+          id="datawidthOne"
+          name="datawidth"
+          value="fluid"
+          (click)="changeWidth('fluid')"
+          [ngClass]="{ active: width == 'fluid' }"
+          class="btn border-dashed border-slate-200 bg-white text-slate-500 transition-all duration-200 ease-linear hover:border-slate-200 hover:bg-slate-50 hover:text-slate-500 dark:border-zink-400 dark:bg-zink-600 dark:text-zink-200 dark:hover:border-zink-400 dark:hover:bg-zink-600 dark:hover:text-zink-100 [&.active]:border-custom-200 [&.active]:bg-custom-50 [&.active]:text-custom-500 dark:[&.active]:border-custom-500/30 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500"
+        >
+          Fluid
+        </button>
+        <button
+          type="button"
+          id="datawidthTwo"
+          name="datawidth"
+          value="boxed"
+          (click)="changeWidth('boxed')"
+          [ngClass]="{ active: width == 'boxed' }"
+          class="btn border-dashed border-slate-200 bg-white text-slate-500 transition-all duration-200 ease-linear hover:border-slate-200 hover:bg-slate-50 hover:text-slate-500 dark:border-zink-400 dark:bg-zink-600 dark:text-zink-200 dark:hover:border-zink-400 dark:hover:bg-zink-600 dark:hover:text-zink-100 [&.active]:border-custom-200 [&.active]:bg-custom-50 [&.active]:text-custom-500 dark:[&.active]:border-custom-500/30 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500"
+        >
+          Boxed
+        </button>
+      </div>
+    </div>
+
+    @if (theme == 'vertical') {
+      <div class="mt-6" id="sidebar-size">
+        <h5 class="mb-3 text-15 capitalize underline">Sidebar Size</h5>
+        <div class="flex flex-wrap gap-3">
+          <button
+            type="button"
+            id="sidebarSizeOne"
+            name="sidebarSize"
+            value="lg"
+            (click)="changeSize('lg')"
+            [ngClass]="{ active: size == 'lg' }"
+            class="btn border-dashed border-slate-200 bg-white text-slate-500 transition-all duration-200 ease-linear hover:border-slate-200 hover:bg-slate-50 hover:text-slate-500 dark:border-zink-400 dark:bg-zink-600 dark:text-zink-200 dark:hover:border-zink-400 dark:hover:bg-zink-600 dark:hover:text-zink-100 [&.active]:border-custom-200 [&.active]:bg-custom-50 [&.active]:text-custom-500 dark:[&.active]:border-custom-500/30 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500"
+          >
+            Default
+          </button>
+          <button
+            type="button"
+            id="sidebarSizeTwo"
+            name="sidebarSize"
+            value="md"
+            (click)="changeSize('md')"
+            [ngClass]="{ active: size == 'md' }"
+            class="btn border-dashed border-slate-200 bg-white text-slate-500 transition-all duration-200 ease-linear hover:border-slate-200 hover:bg-slate-50 hover:text-slate-500 dark:border-zink-400 dark:bg-zink-600 dark:text-zink-200 dark:hover:border-zink-400 dark:hover:bg-zink-600 dark:hover:text-zink-100 [&.active]:border-custom-200 [&.active]:bg-custom-50 [&.active]:text-custom-500 dark:[&.active]:border-custom-500/30 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500"
+          >
+            Compact
+          </button>
+          <button
+            type="button"
+            id="sidebarSizeThree"
+            name="sidebarSize"
+            value="sm"
+            (click)="changeSize('sm')"
+            [ngClass]="{ active: size == 'sm' }"
+            class="btn border-dashed border-slate-200 bg-white text-slate-500 transition-all duration-200 ease-linear hover:border-slate-200 hover:bg-slate-50 hover:text-slate-500 dark:border-zink-400 dark:bg-zink-600 dark:text-zink-200 dark:hover:border-zink-400 dark:hover:bg-zink-600 dark:hover:text-zink-100 [&.active]:border-custom-200 [&.active]:bg-custom-50 [&.active]:text-custom-500 dark:[&.active]:border-custom-500/30 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500"
+          >
+            Small (Icon)
+          </button>
+        </div>
+      </div>
+    }
+
+    <div class="mt-6" id="navigation-type">
+      <h5 class="mb-3 text-15 capitalize underline">Navigation Type</h5>
+      <div class="flex flex-wrap gap-3">
+        <button
+          type="button"
+          id="navbarTwo"
+          name="navbar"
+          value="sticky"
+          (click)="changenavbar('sticky')"
+          [ngClass]="{ active: navbar == 'sticky' }"
+          class="btn border-dashed border-slate-200 bg-white text-slate-500 transition-all duration-200 ease-linear hover:border-slate-200 hover:bg-slate-50 hover:text-slate-500 dark:border-zink-400 dark:bg-zink-600 dark:text-zink-200 dark:hover:border-zink-400 dark:hover:bg-zink-600 dark:hover:text-zink-100 [&.active]:border-custom-200 [&.active]:bg-custom-50 [&.active]:text-custom-500 dark:[&.active]:border-custom-500/30 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500"
+        >
+          Sticky
+        </button>
+        <button
+          type="button"
+          id="navbarOne"
+          name="navbar"
+          value="scroll"
+          (click)="changenavbar('scroll')"
+          [ngClass]="{ active: navbar == 'scroll' }"
+          class="btn border-dashed border-slate-200 bg-white text-slate-500 transition-all duration-200 ease-linear hover:border-slate-200 hover:bg-slate-50 hover:text-slate-500 dark:border-zink-400 dark:bg-zink-600 dark:text-zink-200 dark:hover:border-zink-400 dark:hover:bg-zink-600 dark:hover:text-zink-100 [&.active]:border-custom-200 [&.active]:bg-custom-50 [&.active]:text-custom-500 dark:[&.active]:border-custom-500/30 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500"
+        >
+          Scroll
+        </button>
+        <button
+          type="button"
+          id="navbarThree"
+          name="navbar"
+          value="bordered"
+          (click)="changenavbar('bordered')"
+          [ngClass]="{ active: navbar == 'bordered' }"
+          class="btn border-dashed border-slate-200 bg-white text-slate-500 transition-all duration-200 ease-linear hover:border-slate-200 hover:bg-slate-50 hover:text-slate-500 dark:border-zink-400 dark:bg-zink-600 dark:text-zink-200 dark:hover:border-zink-400 dark:hover:bg-zink-600 dark:hover:text-zink-100 [&.active]:border-custom-200 [&.active]:bg-custom-50 [&.active]:text-custom-500 dark:[&.active]:border-custom-500/30 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500"
+        >
+          Bordered
+        </button>
+        <button
+          type="button"
+          id="navbarFour"
+          name="navbar"
+          value="hidden"
+          (click)="changenavbar('hidden')"
+          [ngClass]="{ active: navbar == 'hidden' }"
+          class="btn border-dashed border-slate-200 bg-white text-slate-500 transition-all duration-200 ease-linear hover:border-slate-200 hover:bg-slate-50 hover:text-slate-500 dark:border-zink-400 dark:bg-zink-600 dark:text-zink-200 dark:hover:border-zink-400 dark:hover:bg-zink-600 dark:hover:text-zink-100 [&.active]:border-custom-200 [&.active]:bg-custom-50 [&.active]:text-custom-500 dark:[&.active]:border-custom-500/30 dark:[&.active]:bg-custom-500/10 dark:[&.active]:text-custom-500"
+        >
+          Hidden
+        </button>
+      </div>
+    </div>
+
+    @if (theme == 'vertical') {
+      <div class="mt-6" id="sidebar-color">
+        <h5 class="mb-3 text-15 capitalize underline">Sizebar Colors</h5>
+        <div class="flex flex-wrap gap-3">
+          <button
+            type="button"
+            id="sidebarColorOne"
+            name="sidebarColor"
+            value="light"
+            (click)="changecolor('light')"
+            [ngClass]="{ active: color == 'light' }"
+            class="group active flex size-10 items-center justify-center rounded-md border border-slate-200 bg-white"
+          >
+            <lucide-angular name="check" [class]="'hidden size-5 text-slate-600 group-[.active]:inline-block'"></lucide-angular>
+          </button>
+          <button
+            type="button"
+            id="sidebarColorTwo"
+            name="sidebarColor"
+            value="dark"
+            (click)="changecolor('dark')"
+            [ngClass]="{ active: color == 'dark' }"
+            class="group flex size-10 items-center justify-center rounded-md border border-zink-900 bg-zink-900"
+          >
+            <lucide-angular name="check" [class]="'hidden size-5 text-white group-[.active]:inline-block'"></lucide-angular>
+          </button>
+          <button
+            type="button"
+            id="sidebarColorThree"
+            name="sidebarColor"
+            value="brand"
+            (click)="changecolor('brand')"
+            [ngClass]="{ active: color == 'brand' }"
+            class="group flex size-10 items-center justify-center rounded-md border border-custom-800 bg-custom-800"
+          >
+            <lucide-angular name="check" [class]="'hidden size-5 text-white group-[.active]:inline-block'"></lucide-angular>
+          </button>
+          <button
+            type="button"
+            id="sidebarColorFour"
+            name="sidebarColor"
+            value="modern"
+            (click)="changecolor('modern')"
+            [ngClass]="{ active: color == 'modern' }"
+            class="group flex size-10 items-center justify-center rounded-md border border-purple-950 bg-gradient-to-t from-red-400 to-purple-500"
+          >
+            <lucide-angular name="check" [class]="'hidden size-5 text-white group-[.active]:inline-block'"></lucide-angular>
+          </button>
+        </div>
+      </div>
+    }
+
+    <div class="mt-6">
+      <h5 class="mb-3 text-15 capitalize underline">Topbar Colors</h5>
+      <div class="flex flex-wrap gap-3">
+        <button
+          type="button"
+          id="topbarColorOne"
+          name="topbarColor"
+          value="light"
+          (click)="changetopbar('light')"
+          [ngClass]="{ active: topbar == 'light' }"
+          class="group active flex size-10 items-center justify-center rounded-md border border-slate-200 bg-white"
+        >
+          <lucide-angular name="check" [class]="'hidden size-5 text-slate-600 group-[.active]:inline-block'"></lucide-angular>
+        </button>
+        <button
+          type="button"
+          id="topbarColorTwo"
+          name="topbarColor"
+          value="dark"
+          (click)="changetopbar('dark')"
+          [ngClass]="{ active: topbar == 'dark' }"
+          class="group flex size-10 items-center justify-center rounded-md border border-zink-900 bg-zink-900"
+        >
+          <lucide-angular name="check" [class]="'hidden size-5 text-white group-[.active]:inline-block'"></lucide-angular>
+        </button>
+        <button
+          type="button"
+          id="topbarColorThree"
+          name="topbarColor"
+          value="brand"
+          (click)="changetopbar('brand')"
+          [ngClass]="{ active: topbar == 'brand' }"
+          class="group flex size-10 items-center justify-center rounded-md border border-custom-800 bg-custom-800"
+        >
+          <lucide-angular name="check" [class]="'hidden size-5 text-white group-[.active]:inline-block'"></lucide-angular>
+        </button>
+      </div>
+    </div>
+  </div>
+</drawer>

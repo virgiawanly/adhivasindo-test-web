@@ -1,0 +1,169 @@
+<header
+  id="page-topbar"
+  (window:scroll)="windowScroll()"
+  class="group/topbar fixed left-0 right-0 z-[1000] transition-all duration-300 ease-linear group-data-[navbar=scroll]:absolute group-data-[layout=horizontal]:z-[1004] group-data-[navbar=bordered]:m-4 group-data-[navbar=hidden]:hidden group-data-[layout=horizontal]:ltr:left-0 ltr:md:left-vertical-menu group-data-[sidebar-size=md]:ltr:md:left-vertical-menu-md group-data-[sidebar-size=sm]:ltr:md:left-vertical-menu-sm group-data-[layout=horizontal]:rtl:right-0 rtl:md:right-vertical-menu group-data-[sidebar-size=md]:rtl:md:right-vertical-menu-md group-data-[sidebar-size=sm]:rtl:md:right-vertical-menu-sm print:hidden group-data-[navbar=bordered]:[&.is-sticky]:mt-0"
+>
+  <div class="layout-width">
+    <div
+      class="mx-auto flex h-header items-center border-b-2 border-topbar bg-topbar px-4 shadow-md shadow-slate-200/50 group-data-[navbar=bordered]:rounded-md group-data-[layout=horizontal]:group-data-[navbar=bordered]:rounded-b-none group-data-[topbar=brand]:border-topbar-brand group-data-[topbar=dark]:border-topbar-dark group-data-[topbar=brand]:bg-topbar-brand group-data-[topbar=dark]:bg-topbar-dark group-data-[layout=horizontal]:shadow-none group-data-[navbar=bordered]:shadow-none group-data-[navbar=bordered]:group-[.is-sticky]/topbar:rounded-t-none dark:shadow-none group-data-[topbar=dark]:dark:border-zink-800 group-data-[topbar=dark]:dark:bg-zink-900 group-data-[layout=horizontal]:dark:group-[.is-sticky]/topbar:shadow-none group-data-[topbar=dark]:group-[.is-sticky]/topbar:dark:shadow-md group-data-[topbar=dark]:group-[.is-sticky]/topbar:dark:shadow-zink-500"
+    >
+      <div
+        class="navbar-header flex w-full items-center group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:ltr:xl:pr-3 group-data-[layout=horizontal]:rtl:xl:pl-3"
+      >
+        <!-- LOGO -->
+        <div
+          class="group-data-[layout=horizontal]:ltr::pl-0 hidden h-header items-center justify-center px-5 text-center group-data-[layout=horizontal]:md:flex group-data-[layout=horizontal]:rtl:pr-0"
+        >
+          <a routerLink="/">
+            <span class="hidden">
+              <img src="assets/images/logo-default.png" alt="" class="h-6 mx-auto" />
+            </span>
+            <span class="group-data-[topbar=brand]:hidden group-data-[topbar=dark]:hidden">
+              <img src="assets/images/logo-default.png" alt="" class="h-6 mx-auto" />
+            </span>
+          </a>
+          <a routerLink="/" class="hidden group-data-[topbar=brand]:block group-data-[topbar=dark]:block">
+            <span class="group-data-[topbar=brand]:hidden group-data-[topbar=dark]:hidden">
+              <img src="assets/images/logo-sm.png" alt="" class="h-6 mx-auto" />
+            </span>
+            <span class="group-data-[topbar=brand]:block group-data-[topbar=dark]:block">
+              <img src="assets/images/logo-default.png" alt="" class="h-6 mx-auto" />
+            </span>
+          </a>
+        </div>
+
+        <button
+          type="button"
+          (click)="changeSidebar()"
+          class="hamburger-icon btn relative inline-flex size-[37.5px] items-center justify-center rounded-md bg-topbar p-0 text-topbar-item transition-all duration-75 ease-linear hover:bg-slate-100 group-data-[layout=horizontal]:flex group-data-[topbar=brand]:border-topbar-brand group-data-[topbar=dark]:border-topbar-dark group-data-[topbar=brand]:bg-topbar-brand group-data-[topbar=dark]:bg-topbar-dark group-data-[topbar=brand]:text-topbar-item-brand group-data-[topbar=dark]:text-topbar-item-dark group-data-[topbar=brand]:hover:bg-topbar-item-bg-hover-brand group-data-[topbar=dark]:hover:bg-topbar-item-bg-hover-dark group-data-[topbar=brand]:hover:text-topbar-item-hover-brand group-data-[topbar=dark]:hover:text-topbar-item-hover-dark group-data-[topbar=dark]:dark:border-zink-800 group-data-[topbar=dark]:dark:bg-zink-900 group-data-[topbar=dark]:dark:text-zink-200 group-data-[topbar=dark]:dark:hover:bg-zink-800 group-data-[topbar=dark]:dark:hover:text-zink-50 group-data-[layout=horizontal]:md:hidden"
+          id="topnav-hamburger-icon"
+        >
+          <lucide-angular
+            name="chevrons-left"
+            [class]="'h-5 w-5 text-gray-500 group-data-[sidebar-size=sm]:hidden dark:text-zink-200'"
+          ></lucide-angular>
+          <lucide-angular
+            name="chevrons-right"
+            [class]="'hidden h-5 w-5 text-gray-500 group-data-[sidebar-size=sm]:block dark:text-zink-200'"
+          ></lucide-angular>
+        </button>
+
+        <div class="flex items-center flex-1 px-3">
+          <h3 class="font-bold uppercase md:text-lg">Learning Management System</h3>
+        </div>
+
+        <div class="flex gap-3 ms-auto">
+          <!-- <div class="relative flex items-center h-header">
+            <button
+              type="button"
+              (click)="changeLayoutMode()"
+              class="btn relative inline-flex size-[37.5px] items-center justify-center rounded-md bg-topbar p-0 text-topbar-item transition-all duration-200 ease-linear hover:bg-topbar-item-bg-hover hover:text-topbar-item-hover group-data-[topbar=brand]:bg-topbar-brand group-data-[topbar=dark]:bg-topbar-dark group-data-[topbar=brand]:text-topbar-item-brand group-data-[topbar=dark]:text-topbar-item-dark group-data-[topbar=brand]:hover:bg-topbar-item-bg-hover-brand group-data-[topbar=dark]:hover:bg-topbar-item-bg-hover-dark group-data-[topbar=brand]:hover:text-topbar-item-hover-brand group-data-[topbar=dark]:hover:text-topbar-item-hover-dark group-data-[topbar=dark]:dark:bg-zink-900 group-data-[topbar=dark]:dark:text-zink-200 group-data-[topbar=dark]:dark:hover:bg-zink-800 group-data-[topbar=dark]:dark:hover:text-zink-50"
+              id="light-dark-mode"
+            >
+              <lucide-angular
+                name="sun"
+                [class]="
+                  'inline-block size-5 fill-stone-100 stroke-1 group-data-[topbar=brand]:fill-topbar-item-bg-hover-brand group-data-[topbar=dark]:fill-topbar-item-bg-hover-dark'
+                "
+              ></lucide-angular>
+            </button>
+          </div> -->
+
+          <div mndropdown [placement]="'bottom-start'" class="relative flex items-center dropdown h-header">
+            <button
+              mndropdownToggle
+              type="button"
+              class="dropdown-toggle btn inline-block rounded-full bg-topbar p-0 text-topbar-item transition-all duration-200 ease-linear hover:bg-topbar-item-bg-hover hover:text-topbar-item-hover group-data-[topbar=brand]:bg-topbar-brand group-data-[topbar=dark]:bg-topbar-dark group-data-[topbar=brand]:text-topbar-item-brand group-data-[topbar=dark]:text-topbar-item-dark group-data-[topbar=brand]:hover:bg-topbar-item-bg-hover-brand group-data-[topbar=dark]:hover:bg-topbar-item-bg-hover-dark group-data-[topbar=brand]:hover:text-topbar-item-hover-brand group-data-[topbar=dark]:hover:text-topbar-item-hover-dark group-data-[topbar=dark]:dark:bg-zink-900 group-data-[topbar=dark]:dark:text-zink-200 group-data-[topbar=dark]:dark:hover:bg-zink-800 group-data-[topbar=dark]:dark:hover:text-zink-50"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+            >
+              <div
+                class="flex size-[37.5px] shrink-0 items-center justify-center rounded-full bg-zink-200 bg-opacity-15 font-medium text-custom-800 dark:bg-zink-600 dark:text-zink-50"
+              >
+                {{ getNameInitials(user?.name) }}
+              </div>
+            </button>
+            <div
+              mndropdownMenu
+              class="dropdown-menu absolute !top-4 z-50 min-w-[14rem] rounded-md bg-white p-4 shadow-md dark:bg-zink-800 ltr:text-left rtl:text-right"
+              aria-labelledby="dropdownMenuButton"
+            >
+              <h6 class="mb-3 text-sm font-normal text-slate-500 dark:text-zink-300">{{ 'welcome-to-adhivasindovasindonesia' | translate }}</h6>
+              <a href="javascript:void(0);" class="flex gap-3 mb-3">
+                <div class="relative inline-block shrink-0">
+                  <div class="rounded bg-slate-100 dark:bg-zink-500">
+                    <div
+                      class="flex items-center justify-center font-medium rounded size-12 shrink-0 bg-zink-200 bg-opacity-15 text-custom-800 dark:bg-zink-600 dark:text-zink-50"
+                    >
+                      {{ getNameInitials(user?.name) }}
+                    </div>
+                  </div>
+                  <span
+                    class="absolute -top-1 size-2.5 rounded-full border-2 border-white bg-green-400 dark:border-zink-600 ltr:-right-1 rtl:-left-1"
+                  ></span>
+                </div>
+                <div class="overflow-hidden">
+                  <h6 class="mb-1 text-15">{{ user?.name || '' }}</h6>
+                  <p class="w-full text-sm line-clamp-1 text-slate-500 dark:text-zink-300">{{ user?.email }}</p>
+                </div>
+              </a>
+              <ul>
+                <li class="pt-2 mt-2 border-t border-slate-200 dark:border-zink-500">
+                  <a
+                    [appModalTrigger]="'logoutConfirmationModal'"
+                    class="dropdown-item block cursor-pointer py-1.5 text-base font-medium text-slate-600 transition-all duration-200 ease-linear hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500 ltr:pr-4 rtl:pl-4"
+                  >
+                    <lucide-angular name="log-out" [class]="'inline-block size-4 ltr:mr-2 rtl:ml-2'"></lucide-angular> {{ 'logout' | translate }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<ng-modals
+  id="logoutConfirmationModal"
+  [placement]="'modal-center'"
+  [backdropDismiss]="true"
+  [escDismiss]="true"
+  className=" fixed flex flex-col transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 "
+>
+  <div class="flex h-full w-screen flex-col rounded-md bg-white shadow dark:bg-zink-800 md:w-[25rem]">
+    <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
+      <h5 class="text-16">{{ 'logout-confirmation' | translate | titlecase }}</h5>
+      <button
+        dismissModal
+        [ModalDismiss]="'logoutConfirmationModal'"
+        class="transition-all duration-200 ease-linear text-slate-500 hover:text-red-500 dark:text-zink-200 dark:hover:text-red-500"
+      >
+        <lucide-angular name="x" [class]="'size-5'"></lucide-angular>
+      </button>
+    </div>
+    <div class="max-h-[calc(theme('height.screen')_-_180px)] overflow-y-auto p-4">
+      <p class="text-slate-500 dark:text-zink-200">{{ 'are-you-sure-want-to-logout?' | translate }}</p>
+    </div>
+    <div class="flex items-center justify-end gap-2 p-4 mt-auto border-t border-slate-200 dark:border-zink-500">
+      <button
+        type="button"
+        dismissModal
+        [ModalDismiss]="'logoutConfirmationModal'"
+        class="bg-white btn border-custom-500 text-custom-500 hover:border-custom-600 hover:bg-custom-600 hover:text-white focus:border-custom-600 focus:bg-custom-600 focus:text-white focus:ring focus:ring-custom-100 active:border-custom-600 active:bg-custom-600 active:text-white active:ring active:ring-custom-100 dark:bg-zink-900 dark:ring-custom-400/20 dark:hover:bg-custom-500 dark:focus:bg-custom-500"
+      >
+        {{ 'cancel' | translate | titlecase }}
+      </button>
+      <button
+        type="button"
+        dismissModal
+        [ModalDismiss]="'logoutConfirmationModal'"
+        class="text-white btn border-custom-500 bg-custom-500 hover:border-custom-600 hover:bg-custom-600 hover:text-white focus:border-custom-600 focus:bg-custom-600 focus:text-white focus:ring focus:ring-custom-100 active:border-custom-600 active:bg-custom-600 active:text-white active:ring active:ring-custom-100 dark:ring-custom-400/20"
+        (click)="logout()"
+      >
+        {{ 'logout' | translate | titlecase }}
+      </button>
+    </div>
+  </div>
+</ng-modals>
