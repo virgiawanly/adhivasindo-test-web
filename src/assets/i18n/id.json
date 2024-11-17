@@ -27,6 +27,8 @@
   "action.cancel": "Batal",
   "action.save": "Simpan",
   "action.submit": "Submit",
+  "action.edit": "Edit",
+  "action.delete": "Hapus",
   "action.yes-delete": "Ya, Hapus",
 
   "confirmation.are-you-sure-want-to-delete-this-data?": "Apakah Anda yakin ingin menghapus {{data}} ini?",
@@ -40,12 +42,27 @@
   "menu.settings": "Pengaturan",
 
   "tools.page-title": "Tools",
-  "tools.list-title": "Tool List",
+  "tools.list-title": "List Tool",
+
+  "courses.title": "Kursus",
+  "courses.page-title": "List Kursus",
+  "courses.list-title": "List Kursus",
+  "courses.competencies": "Kompetensi",
+  "courses.tools": "Tools/Teknologi",
+  "courses.details.page-title": "Detail Kursus",
 
   "placeholders.input-field": "Masukkan {{field}}",
   "placeholders.upload-file": "Unggah file",
+  "placeholders.select-field": "Pilih {{field}}",
 
   "attributes.name": "nama",
+  "attributes.competencies": "Kompetensi",
+  "attributes.competency": "Kompetensi",
+  "attributes.description": "Deskripsi",
+  "attributes.image": "Gambar",
+  "attributes.tools": "Tools",
+  "attributes.status": "Status",
+  "attributes.course": "Kursus",
 
   "validation.required": "Wajib diisi",
   "validation.field-required": "{{field}} wajib diisi",

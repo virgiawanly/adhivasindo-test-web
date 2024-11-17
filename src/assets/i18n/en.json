@@ -27,6 +27,8 @@
   "action.cancel": "Cancel",
   "action.save": "Save",
   "action.submit": "Submit",
+  "action.edit": "Edit",
+  "action.delete": "Delete",
   "action.yes-delete": "Yes, Delete",
 
   "menu.dashboard": "Dashboard",
@@ -42,10 +44,25 @@
   "tools.page-title": "Tools",
   "tools.list-title": "Tool List",
 
+  "courses.title": "Courses",
+  "courses.page-title": "Courses",
+  "courses.list-title": "Tool List",
+  "courses.competencies": "Competencies",
+  "courses.tools": "Tools",
+  "courses.details.page-title": "Course Detail",
+
   "placeholders.input-field": "Enter {{field}}",
   "placeholders.upload-file": "Upload File",
+  "placeholders.select-field": "Select {{field}}",
 
   "attributes.name": "name",
+  "attributes.competencies": "Competencies",
+  "attributes.competency": "Competency",
+  "attributes.description": "Description",
+  "attributes.image": "Image",
+  "attributes.tools": "Tools",
+  "attributes.status": "Status",
+  "attributes.course": "Course",
 
   "validation.required": "Required",
   "validation.field-required": "Field {{field}} required",
