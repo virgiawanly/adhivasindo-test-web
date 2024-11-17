@@ -13,6 +13,7 @@
         <img src="assets/images/logo-default.png" alt="" class="object-cover w-48 h-auto max-w-full px-2 mx-auto dark:w-40" />
       </div>
     </a>
+
     <a routerLink="/" class="hidden group-data-[sidebar=brand]:block group-data-[sidebar=dark]:block group-data-[sidebar=modern]:block">
       <span class="hidden group-data-[sidebar-size=sm]:block">
         <img src="assets/images/logo-sm.png" alt="" class="h-8 mx-auto" />
@@ -25,8 +26,8 @@
       <i class="ri-record-circle-line"></i>
     </button>
   </div>
+
   @if (layout == 'vertical' && size != 'sm') {
-    <!-- <ngx-simplebar> -->
     <ngx-simplebar
       id="scrollbar"
       class="group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:h-56 group-data-[sidebar-size=lg]:max-h-[calc(100vh_-_theme('spacing.header')_*_1.2)] group-data-[sidebar-size=md]:max-h-[calc(100vh_-_theme('spacing.header')_*_1.2)] group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:overflow-auto group-data-[layout=horizontal]:md:h-auto group-data-[layout=horizontal]:md:overflow-visible px-2 pt-6"
@@ -177,7 +178,18 @@
       </ul>
     </ngx-simplebar>
     <!-- Sidebar -->
-    <!-- </ngx-simplebar> -->
+
+    <div class="p-5 my-2 border-t border-zink-800 flex flex-col">
+      <button
+        [appModalTrigger]="'logoutConfirmationModal'"
+        class="w-full flex gap-3 group/menu-link relative my-1 items-center rounded-md py-2.5 text-vertical-menu-item-font-size font-normal text-vertical-menu-item hover:bg-vertical-menu-item-bg-hover hover:text-vertical-menu-item-hover group-data-[layout=horizontal]:m-0 group-data-[sidebar-size=sm]:my-0 group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:text-center group-data-[sidebar=brand]:text-vertical-menu-item-brand group-data-[sidebar=dark]:text-vertical-menu-item-dark group-data-[sidebar=modern]:text-vertical-menu-item-modern group-data-[layout=horizontal]:hover:bg-transparent group-data-[sidebar=brand]:hover:bg-vertical-menu-item-bg-hover-brand group-data-[sidebar=dark]:hover:bg-vertical-menu-item-bg-hover-dark group-data-[sidebar=modern]:hover:bg-vertical-menu-item-bg-hover-modern group-data-[sidebar=brand]:hover:text-vertical-menu-item-hover-brand group-data-[sidebar=dark]:hover:text-vertical-menu-item-hover-dark group-data-[sidebar=modern]:hover:text-vertical-menu-item-hover-modern group-data-[sidebar-size=sm]:group-hover/sm:w-[calc(theme('spacing.vertical-menu-sm')_*_3.63)] group-data-[sidebar-size=sm]:group-data-[sidebar=brand]:group-hover/sm:bg-vertical-menu-brand group-data-[sidebar-size=sm]:group-data-[sidebar=dark]:group-hover/sm:bg-vertical-menu-dark group-data-[sidebar-size=sm]:group-data-[sidebar=modern]:group-hover/sm:bg-vertical-menu-border-modern group-data-[sidebar-size=sm]:group-hover/sm:bg-vertical-menu group-data-[layout=horizontal]:dark:text-zink-200 group-data-[sidebar=dark]:dark:text-zink-200 group-data-[sidebar=dark]:dark:hover:bg-zink-600 group-data-[layout=horizontal]:dark:hover:text-custom-500 group-data-[sidebar=dark]:dark:hover:text-custom-500 ltr:pl-3 ltr:pr-5 group-data-[layout=horizontal]:ltr:pr-8 rtl:pl-5 rtl:pr-3 group-data-[layout=horizontal]:rtl:pl-8 [&.active]:bg-vertical-menu-item-bg-active [&.active]:text-vertical-menu-item-active [&.active]:dark:text-white group-data-[layout=horizontal]:[&.active]:bg-transparent group-data-[sidebar=brand]:[&.active]:bg-vertical-menu-item-bg-active-brand group-data-[sidebar=dark]:[&.active]:bg-vertical-menu-item-bg-active-dark group-data-[sidebar=modern]:[&.active]:bg-vertical-menu-item-bg-active-modern group-data-[sidebar=brand]:[&.active]:text-vertical-menu-item-active-brand group-data-[sidebar=dark]:[&.active]:text-vertical-menu-item-active-dark group-data-[sidebar=dark]:[&.active]:dark:text-white group-data-[sidebar=modern]:[&.active]:text-vertical-menu-item-active-modern group-data-[sidebar=dark]:[&.active]:dark:bg-zink-800 group-data-[layout=horizontal]:dark:[&.active]:text-custom-500 [&.dropdown-button]:before:absolute [&.dropdown-button]:before:font-remix [&.dropdown-button]:before:text-16 [&.dropdown-button]:before:content-['\ea6e'] group-data-[sidebar-size=md]:[&.dropdown-button]:before:hidden group-data-[sidebar-size=sm]:[&.dropdown-button]:before:hidden group-data-[layout=horizontal]:[&.dropdown-button]:before:rotate-90 ltr:[&.dropdown-button]:before:right-2 rtl:[&.dropdown-button]:before:left-2 rtl:[&.dropdown-button]:before:rotate-180 [&.dropdown-button]:[&.show]:before:content-['\ea4e'] group-data-[layout=horizontal]:[&.dropdown-button]:[&.show]:before:rotate-0 rtl:[&.dropdown-button]:[&.show]:before:rotate-0"
+      >
+        <div class="size-6 grid place-items-center rounded-full text-white bg-gradient-to-tr from-red-600 to-orange-600">
+          <lucide-angular name="log-out" class="size-3"></lucide-angular>
+        </div>
+        <span class="font-medium">{{ 'action.logout' | translate }}</span>
+      </button>
+    </div>
   } @else {
     <div
       id="scrollbar"
@@ -331,3 +343,46 @@
 </div>
 <!-- Left Sidebar End -->
 <div id="sidebar-overlay" class="absolute inset-0 z-[1002] hidden bg-slate-500/30" (click)="hideSidebar()"></div>
+
+<ng-modals
+  id="logoutConfirmationModal"
+  [placement]="'modal-center'"
+  [backdropDismiss]="true"
+  [escDismiss]="true"
+  className=" fixed flex flex-col transition-all duration-300 ease-in-out left-2/4 z-drawer -translate-x-2/4 -translate-y-2/4 "
+>
+  <div class="flex h-full w-screen flex-col rounded-md bg-white shadow dark:bg-zink-800 md:w-[25rem]">
+    <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-zink-500">
+      <h5 class="text-16">{{ 'logout-confirmation' | translate | titlecase }}</h5>
+      <button
+        dismissModal
+        [ModalDismiss]="'logoutConfirmationModal'"
+        class="transition-all duration-200 ease-linear text-slate-500 hover:text-red-500 dark:text-zink-200 dark:hover:text-red-500"
+      >
+        <lucide-angular name="x" [class]="'size-5'"></lucide-angular>
+      </button>
+    </div>
+    <div class="max-h-[calc(theme('height.screen')_-_180px)] overflow-y-auto p-4">
+      <p class="text-slate-500 dark:text-zink-200">{{ 'are-you-sure-want-to-logout?' | translate }}</p>
+    </div>
+    <div class="flex items-center justify-end gap-2 p-4 mt-auto border-t border-slate-200 dark:border-zink-500">
+      <button
+        type="button"
+        dismissModal
+        [ModalDismiss]="'logoutConfirmationModal'"
+        class="bg-white btn border-custom-500 text-custom-500 hover:border-custom-600 hover:bg-custom-600 hover:text-white focus:border-custom-600 focus:bg-custom-600 focus:text-white focus:ring focus:ring-custom-100 active:border-custom-600 active:bg-custom-600 active:text-white active:ring active:ring-custom-100 dark:bg-zink-900 dark:ring-custom-400/20 dark:hover:bg-custom-500 dark:focus:bg-custom-500"
+      >
+        {{ 'cancel' | translate | titlecase }}
+      </button>
+      <button
+        type="button"
+        dismissModal
+        [ModalDismiss]="'logoutConfirmationModal'"
+        class="text-white btn border-custom-500 bg-custom-500 hover:border-custom-600 hover:bg-custom-600 hover:text-white focus:border-custom-600 focus:bg-custom-600 focus:text-white focus:ring focus:ring-custom-100 active:border-custom-600 active:bg-custom-600 active:text-white active:ring active:ring-custom-100 dark:ring-custom-400/20"
+        (click)="logout()"
+      >
+        {{ 'action.logout' | translate | titlecase }}
+      </button>
+    </div>
+  </div>
+</ng-modals>

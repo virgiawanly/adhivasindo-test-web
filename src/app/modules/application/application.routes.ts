@@ -18,6 +18,11 @@ export const APPLICATION_ROUTES: Routes = [
         loadChildren: () => import('./courses/courses.routes').then((m) => m.COURSES_ROUTES),
       },
       {
+        path: 'users',
+        canActivate: [authGuard],
+        loadChildren: () => import('./users/users.routes').then((m) => m.USERS_ROUTES),
+      },
+      {
         path: 'tools',
         canActivate: [authGuard],
         loadChildren: () => import('./tools/tools.routes').then((m) => m.TOOLS_ROUTES),

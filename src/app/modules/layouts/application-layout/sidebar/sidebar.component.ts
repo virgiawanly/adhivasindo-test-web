@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, Component, HostListener, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateModule } from '@ngx-translate/core';
 import { LUCIDE_ICONS, LucideAngularModule, LucideIconProvider, icons } from 'lucide-angular';
 import { SimplebarAngularModule } from 'simplebar-angular';
+import { AuthService } from '../../../../core/services/auth.service';
 import { LanguageService } from '../../../../core/services/language.service';
 import { CutomDropdownComponent } from '../../../../shared/components/customdropdown';
+import { MDModalModule } from '../../../../shared/components/modals';
 import { getLayout, getSidebarsize } from '../../../../store/layout/layout.selectors';
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
@@ -14,7 +16,7 @@ import { MenuItem } from './menu.model';
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, SimplebarAngularModule, CutomDropdownComponent, RouterModule, LucideAngularModule, TranslateModule],
+  imports: [CommonModule, SimplebarAngularModule, CutomDropdownComponent, RouterModule, LucideAngularModule, TranslateModule, MDModalModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -30,7 +32,10 @@ export class SidebarComponent {
 
   private store = inject(Store);
 
-  constructor() {}
+  constructor(
+    private _authService: AuthService,
+    private _router: Router
+  ) {}
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -126,5 +131,11 @@ export class SidebarComponent {
     sidebarOverlay.classList.add('hidden');
     document.documentElement.querySelector('.app-menu')?.classList.add('hidden');
     document.body.classList.remove('overflow-hidden');
+  }
+
+  logout() {
+    this._authService.logout().subscribe(() => {
+      this._router.navigate(['/auth/login']);
+    });
   }
 }
