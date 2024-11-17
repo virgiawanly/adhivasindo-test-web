@@ -15,7 +15,7 @@ export const MENU: MenuItem[] = [
   },
   {
     id: 2,
-    label: 'menu.users',
+    label: 'menu.student-users',
     icon: 'users',
     link: '/application/users',
   },
@@ -33,11 +33,5 @@ export const MENU: MenuItem[] = [
         parentId: 3,
       },
     ],
-  },
-  {
-    id: 4,
-    label: 'menu.logout',
-    icon: 'log-out',
-    link: '/application/logout',
   },
 ];

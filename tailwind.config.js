@@ -56,10 +56,10 @@ module.exports = {
         'vertical-menu-item': colors.zink[200],
         'vertical-menu-item-hover': colors.zink[800],
         'vertical-menu-item-bg-hover': colors.white,
-        'vertical-menu-item-active': colors.zink[800],
+        'vertical-menu-item-active': colors.zink[400],
         'vertical-menu-item-bg-active': colors.white,
         'vertical-menu-sub-item': colors.zink[200],
-        'vertical-menu-sub-item-hover': colors.zink[800],
+        'vertical-menu-sub-item-hover': colors.zink[400],
         'vertical-menu-sub-item-active': colors.white,
 
         // Sidebar light
@@ -80,10 +80,10 @@ module.exports = {
         'vertical-menu-item-dark': colors.zink[300],
         'vertical-menu-item-hover-dark': colors.zink[800],
         'vertical-menu-item-bg-hover-dark': colors.white,
-        'vertical-menu-item-active-dark': colors.zink[800],
+        'vertical-menu-item-active-dark': colors.zink[400],
         'vertical-menu-item-bg-active-dark': colors.white,
         'vertical-menu-sub-item-dark': colors.zink[300],
-        'vertical-menu-sub-item-hover-dark': colors.zink[800],
+        'vertical-menu-sub-item-hover-dark': colors.zink[400],
         'vertical-menu-sub-item-active-dark': colors.white,
 
         // Sidebar brand

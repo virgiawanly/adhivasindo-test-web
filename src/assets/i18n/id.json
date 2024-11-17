@@ -35,8 +35,8 @@
 
   "menu.dashboard": "Dashboard",
   "menu.courses": "Kursus",
-  "menu.users": "Pengguna",
-  "menu.tools": "Tools/Categories",
+  "menu.student-users": "Users/Students",
+  "menu.tools": "Tools/Teknologi",
   "menu.master-data": "Data Master",
   "menu.logout": "Keluar",
   "menu.settings": "Pengaturan",
@@ -53,6 +53,10 @@
   "courses.chapters": "List Chapter",
   "courses.chapters.page-title": "Detail Chapter",
   "courses.lessons": "List Lessons",
+
+  "users.title": "Users",
+  "users.page-title": "List User",
+  "users.list-title": "List User",
 
   "placeholders.input-field": "Masukkan {{field}}",
   "placeholders.upload-file": "Unggah file",

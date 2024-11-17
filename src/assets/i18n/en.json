@@ -33,7 +33,7 @@
 
   "menu.dashboard": "Dashboard",
   "menu.courses": "Courses",
-  "menu.users": "Users",
+  "menu.student-users": "Users/Students",
   "menu.tools": "Tools",
   "menu.master-data": "Master Data",
   "menu.logout": "Logout",
@@ -53,6 +53,10 @@
   "courses.chapters": "Chapters",
   "courses.chapters.page-title": "Chapter Detail",
   "courses.lessons": "Lessons",
+
+  "users.title": "Users",
+  "users.page-title": "User List",
+  "users.list-title": "User List",
 
   "placeholders.input-field": "Enter {{field}}",
   "placeholders.upload-file": "Upload File",
