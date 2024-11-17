@@ -26,7 +26,7 @@ export class UserEffects {
     return this.actions$.pipe(
       ofType(fetchUser),
       exhaustMap(() => {
-        return this._httpService.get('admin-panel/auth/user').pipe(
+        return this._httpService.get('admin-panel/auth/profile').pipe(
           map((res: any) => fetchUserSuccess({ user: res.data.user })),
           catchError((error) => of(fetchUserError({ error }))),
         );
